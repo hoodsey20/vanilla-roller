@@ -168,6 +168,7 @@ VanillaRoller.prototype = {
       }
     }
     // end multi rollers condition
+
     if (callback) {
       callback(this.value1, this.value2, this.currentChangedInput);
     }
@@ -199,13 +200,12 @@ VanillaRoller.prototype = {
     var rollerHandler = this.rollerHandler;
     var rollerHandler2 = this.rollerHandler2;
 
-    return function (e) {
-      if (e.target !== rollerHandler && e.target !== rollerHandler2) {
-        move(e.pageX);
+    return function (evt) {
+      if (evt.target !== rollerHandler && evt.target !== rollerHandler2) {
+        move(evt.pageX);
       }
     };
   },
-
 
   _setMouseKeyListener: function (element) {
     var move = this._move;
@@ -219,17 +219,19 @@ VanillaRoller.prototype = {
     var callback = onMouseUpCallback.bind(null, this);
 
     var mouseMoveHandler = function (evt) {
+      evt.preventDefault();
       move(evt.pageX, evt.target);
     };
 
     var mouseUpHandler = function (evt) {
+      evt.preventDefault();
       callback();
       document.removeEventListener('mousemove', mouseMoveHandler);
       document.removeEventListener('mouseup', mouseUpHandler);
     };
 
-    var mouseDownHandler = function () {
-      console.log('mousedown');
+    var mouseDownHandler = function (evt) {
+      evt.preventDefault();
       document.addEventListener('mousemove', mouseMoveHandler);
       document.addEventListener('mouseup', mouseUpHandler);
     };
