@@ -5,4 +5,5 @@
 
 # other
 /ignore
+.DS_Store
 */.DS_Store
