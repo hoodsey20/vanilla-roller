@@ -185,6 +185,13 @@ VanillaRoller.prototype = {
     }
   },
 
+  destroy: function () {
+    var currentRollerNode = this.params.parentElement;
+    var newRollerNode = currentRollerNode.cloneNode(true);
+    currentRollerNode.parentNode.replaceChild(newRollerNode, currentRollerNode);
+    // TODO: удалить ссылку на слайдер
+  },
+
   _setInitialValues: function () {
     if (this.params.startValue) {
       this.setValue(this.params.startValue, 1);
