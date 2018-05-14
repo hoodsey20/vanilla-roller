@@ -1,0 +1,71 @@
+.vanilla-roller  {
+  max-width: 350px;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.vanilla-roller__shaft  {
+  position: relative;
+  height: 5px;
+  background-color: #dcdcdc;
+}
+
+.vanilla-roller__shaft-indicator  {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #2f80ed;
+}
+
+.vanilla-roller__circle  {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 30px;
+  height: 30px;
+  transform: translateY(-50%);
+  text-align: center;
+  background-color: #2f80ed;
+  border-radius: 50%;
+  cursor: move;
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+
+.vanilla-roller__circle_2 {
+  left: auto;
+  right: 0;
+}
+
+.vanilla-roller__data-container {
+  margin-bottom: 20px;
+  font-size: 0;
+}
+
+.vanilla-roller__data {
+  font-size: 18px;
+}
+
+@media screen and (min-width: 992px) {
+  .vanilla-roller__circle {
+    width: 15px;
+    height: 15px;
+  }
+
+  .vanilla-roller__circle: before {
+    display: inline-block;
+    content: "";
+  }
+
+  .vanilla-roller__data-container {
+    margin-bottom: 10px;
+  }
+
+  .vanilla-roller__data {
+    font-size: 14px;
+  }
+}

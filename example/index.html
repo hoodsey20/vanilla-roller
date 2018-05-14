@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="../src/vanilla-roller.css">
+  <style>
+    body {
+      background-color: #fff;
+      color: #333;
+    }
+    .wrapper {
+      width: 90%;
+      margin: 0 auto;
+    }
+
+    .footer {
+      background-color: #333;
+      color: #fff;
+    }
+    .vanilla-roller {
+      padding: 20px 0;
+    }
+  </style>
+  <title>vanilla-roller</title>
+</head>
+<body>
+  <header class="header">
+    <div class="wrapper">
+      <h1>vanilla-roller</h1>
+      <h2>Using example:</h2>
+    </div>
+  </header>
+
+  <main>
+    <section class="wrapper">
+        <div class="vanilla-roller" id="singleRoller">
+          <div class="vanilla-roller__shaft">
+            <div class="vanilla-roller__shaft-indicator"></div>
+            <div class="vanilla-roller__circle"></div>
+          </div>
+        </div>
+        <div>
+          <input type="text" name="singleRoller_start" value="">
+        </div>
+        <br>
+        <br>
+        <div class="vanilla-roller" id="doubleRoller">
+          <div class="vanilla-roller__shaft">
+            <div class="vanilla-roller__shaft-indicator"></div>
+            <div class="vanilla-roller__circle"></div>
+            <div class="vanilla-roller__circle vanilla-roller__circle_2"></div>
+          </div>
+        </div>
+
+        <div>
+          <input type="text" name="doubleRoller_start" value="">
+        </div>
+
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrapper">
+
+    </div>
+  </footer>
+  <script src="../src/vanilla-roller.js"></script>
+  <script>
+    window.roller = new VanillaRoller({
+      parentElement: document.getElementById('singleRoller'),
+      minValue: 200,
+      maxValue: 8000,
+      step: 200,
+      startValue: 1000,
+      onMove: function (v1, v2, input) {
+        document.querySelector('[name="singleRoller_start"]').value = `${v1}/${v2}`;
+      },
+      onMouseUp: function (v1, v2, input) {
+        console.log(v1, v2, input);
+      },
+    });
+
+    window.roller2 = new VanillaRoller({
+      parentElement: document.getElementById('doubleRoller'),
+      minValue: 1000,
+      maxValue: 10000,
+      step: 200,
+      startValue: 4000,
+      endValue: 6000,
+      onMove: function (v1, v2, input) {
+        document.querySelector('[name="doubleRoller_start"]').value = `${v1}/${v2}`;
+      },
+      onMouseUp: function (v1, v2, input) {
+        console.log(v1, v2, input);
+      },
+    });
+  </script>
+</body>
+</html>
